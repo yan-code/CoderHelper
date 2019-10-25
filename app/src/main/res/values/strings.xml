@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">CoderHelper</string>
+    <string name="permission_rationale_message">您已拒绝我们申请授权，请同意授权，否则该功能将无法正常使用！</string>
+    <string name="permission_denied_forever_message">我们需要您拒绝的某些权限，请手动将页面设置为授权，否则该功能将无法正常使用！</string>
+</resources>

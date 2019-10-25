@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="function">
+        <item>APP信息</item>
+        <item>设备信息</item>
+        <item>环境切换</item>
+        <item>清除缓存</item>
+        <item>账号管理</item>
+    </string-array>
+
+    <array name="functionRes">
+        <item>@drawable/icon_app</item>
+        <item>@drawable/icon_device</item>
+        <item>@drawable/icon_api_switch</item>
+        <item>@drawable/icon_clear</item>
+        <item>@drawable/icon_accountt</item>
+    </array>
+
+    <string-array name="app_info">
+        <item>Package Name</item>
+        <item>Version Name</item>
+        <item>Version Code</item>
+        <item>当前环境</item>
+        <item>网络类型</item>
+    </string-array>
+
+    <string-array name="device_info">
+        <item>是否root</item>
+        <item>SDK Version Name</item>
+        <item>SDK Version Code</item>
+        <item>Android ID  </item>
+        <item>Mac</item>
+        <item>厂商</item>
+        <item>设备型号</item>
+        <item>IMEI</item>
+    </string-array>
+
+    <string-array name="api">
+        <item>开发</item>
+        <item>测试</item>
+        <item>测试2</item>
+        <item>预发布</item>
+        <item>生产</item>
+    </string-array>
+
+    <array name="apiRes">
+        <item>@drawable/icon_dev</item>
+        <item>@drawable/icon_test</item>
+        <item>@drawable/icon_test2</item>
+        <item>@drawable/icon_pre</item>
+        <item>@drawable/icon_online</item>
+    </array>
+</resources>
