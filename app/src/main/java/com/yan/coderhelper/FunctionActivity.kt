@@ -96,7 +96,10 @@ class FunctionActivity : AppCompatActivity() {
                             ToastUtils.showShort("清除缓存成功！")
                             AppUtils.relaunchApp()
                         }
-                        4 -> LogcatDialog(this@FunctionActivity).show()
+                        4 ->{
+                            ToastUtils.showShort(mFunctionList[position].name)
+                        }
+                        5 -> LogcatDialog(this@FunctionActivity).show()
                     }
                 }
 
