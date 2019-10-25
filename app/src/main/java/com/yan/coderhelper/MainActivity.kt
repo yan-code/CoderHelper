@@ -19,7 +19,9 @@ import com.yan.coderhelper.floatview.MagnetViewListener
 import com.yan.coderhelper.helper.CoderHelper
 import kotlinx.android.synthetic.main.activity_main.*
 
-
+/**
+ * 示例代码
+ */
 class MainActivity : AppCompatActivity() {
 
     companion object {
