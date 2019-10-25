@@ -24,8 +24,8 @@ class CoderHelper {
         }
     }
 
-    internal var mApiCallBack : ApiSwitchCallBack? = null
-    internal var mCurrentApi : Int = SPUtils.getInstance().getInt(HelperConstan.SP_KEY.CURRENT_API,-1)
+    var mApiCallBack : ApiSwitchCallBack? = null
+    var mCurrentApi : Int = SPUtils.getInstance().getInt(HelperConstan.SP_KEY.CURRENT_API,-1)
 
     class Builder{
 
