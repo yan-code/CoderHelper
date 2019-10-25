@@ -1,10 +1,10 @@
 package com.yan.coderhelper.floatview;
 
 import android.content.Context;
+import android.support.annotation.DrawableRes;
+import android.support.annotation.NonNull;
 import android.widget.ImageView;
 
-import androidx.annotation.DrawableRes;
-import androidx.annotation.NonNull;
 
 import com.yan.coderhelper.R;
 

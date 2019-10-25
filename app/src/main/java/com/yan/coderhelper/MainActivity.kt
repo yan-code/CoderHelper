@@ -1,16 +1,8 @@
 package com.yan.coderhelper
 
 import android.annotation.SuppressLint
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.view.WindowManager
-import android.widget.Toast
-import androidx.core.app.ComponentActivity
-import androidx.core.app.ComponentActivity.ExtraData
-import androidx.core.content.ContextCompat.getSystemService
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
-import com.blankj.utilcode.util.LogUtils
+import android.support.v7.app.AppCompatActivity
 import com.blankj.utilcode.util.SPUtils
 import com.yan.coderhelper.callback.ApiSwitchCallBack
 import com.yan.coderhelper.floatview.FloatingMagnetView

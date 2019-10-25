@@ -1,16 +1,8 @@
 package com.yan.coderhelper.helper
 
-import android.app.Dialog
-import android.graphics.Bitmap
-import android.graphics.drawable.ColorDrawable
-import android.text.method.ScrollingMovementMethod
-import android.view.Gravity
-import android.view.LayoutInflater
-import android.view.View
-import android.widget.EditText
-import android.widget.TextView
-import androidx.appcompat.app.AlertDialog
-import com.blankj.utilcode.util.*
+import android.app.AlertDialog
+import com.blankj.utilcode.util.ActivityUtils
+import com.blankj.utilcode.util.PermissionUtils
 import com.yan.coderhelper.R
 
 /**
