@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.res.TypedArray
 import android.os.Bundle
+import android.os.Handler
 import android.support.design.widget.BottomSheetDialog
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.GridLayoutManager
@@ -89,13 +90,14 @@ class FunctionActivity : AppCompatActivity() {
                         }
                         2 -> ApiSwitch(mFunctionList[position].name)
                         3 -> {
-                            SPUtils.getInstance().clear()
                             CleanUtils.cleanInternalSp()
                             CleanUtils.cleanInternalCache()
                             CleanUtils.cleanInternalDbs()
                             CleanUtils.cleanExternalCache()
                             ToastUtils.showShort("清除缓存成功！")
-                            AppUtils.relaunchApp(true)
+                            Handler().postDelayed({
+                                AppUtils.relaunchApp(true)
+                            },500)
                         }
                         4 ->{
                             ToastUtils.showShort(mFunctionList[position].name)
@@ -228,7 +230,9 @@ class FunctionActivity : AppCompatActivity() {
                         }
                     })
                     mApiBottomDialog?.dismiss()
-                    AppUtils.relaunchApp(true)
+                    Handler().postDelayed({
+                        AppUtils.relaunchApp(true)
+                    },500)
                 }
             })
         mRvApiView.adapter = mApiAdapter
