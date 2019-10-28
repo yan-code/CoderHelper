@@ -27,7 +27,6 @@ class CoderHelper {
     var mCurrentApi : Int = SPUtils.getInstance().getInt(HelperConstan.SP_KEY.CURRENT_API,-1)
 
     class Builder{
-
         fun ApiCallBack(apiCallBack:ApiSwitchCallBack):Builder{
             build().mApiCallBack = apiCallBack
             return this

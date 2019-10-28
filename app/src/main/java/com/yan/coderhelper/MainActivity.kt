@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.blankj.utilcode.util.SPUtils
 import com.yan.coderhelper.callback.ApiSwitchCallBack
+import com.yan.coderhelper.callback.AppApiSaveCallBack
 import com.yan.coderhelper.floatview.FloatingMagnetView
 import com.yan.coderhelper.floatview.FloatingView
 import com.yan.coderhelper.floatview.MagnetViewListener
@@ -45,7 +46,10 @@ class MainActivity : AppCompatActivity() {
          */
         api = if (CoderHelper.get().mCurrentApi == -1) api else CoderHelper.get().mCurrentApi
         CoderHelper.Builder().CurrentApi(api).ApiCallBack(object : ApiSwitchCallBack {
-            override fun ApiSwitchListener(apiPosition: Int) {
+            override fun ApiSwitchListener(
+                apiPosition: Int,
+                appApiSaveLIstener: AppApiSaveCallBack
+            ) {
                 when (apiPosition) {
                     0 -> {
                         // todo dev
@@ -68,7 +72,7 @@ class MainActivity : AppCompatActivity() {
                         api = 5
                     }
                 }
-                CoderHelper.Builder().CurrentApi(api)
+                appApiSaveLIstener.AppApiSaveListener(api)
             }
 
         })

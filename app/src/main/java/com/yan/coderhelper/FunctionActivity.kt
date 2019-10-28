@@ -224,7 +224,7 @@ class FunctionActivity : AppCompatActivity() {
                     ToastUtils.showShort(mApiList[position].name)
                     CoderHelper.get().mApiCallBack?.ApiSwitchListener(position,object : AppApiSaveCallBack{
                         override fun AppApiSaveListener(api: Int) {
-                            SPUtils.getInstance().put(HelperConstan.SP_KEY.CURRENT_API, api)
+                            CoderHelper.Builder().CurrentApi(api)
                         }
                     })
                     mApiBottomDialog?.dismiss()
