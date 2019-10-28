@@ -71,15 +71,15 @@ Step 2. Add the dependency
                 appApiSaveCallBack.AppApiSaveListener(HttpConstant.val);
             }
         });
-在BaseActivity添加
 
-   @Override
+在BaseActivity添加
+	
+	@Override
     protected void onResume() {
         super.onResume();
         FloatingView.get().attach(this);
     }
-
-
+	
     @Override
     protected void onPause() {
         super.onPause();
