@@ -5,6 +5,7 @@
 
 # 使用方法
 在Aplication页面添加初始化代码
+
  FloatingView.get().add();
         FloatingView.get().listener(new MagnetViewListener() {
 
@@ -55,6 +56,7 @@
             }
         });
 在BaseActivity添加
+
    @Override
     protected void onResume() {
         super.onResume();
