@@ -52,6 +52,7 @@ class FunctionActivity : AppCompatActivity() {
     companion object {
         fun startActivity(context: Context) {
             var intent = Intent(context, FunctionActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             context.startActivity(intent)
         }
     }
@@ -64,6 +65,9 @@ class FunctionActivity : AppCompatActivity() {
     }
 
     private fun init() {
+        ll_function.setOnClickListener {
+            finish()
+        }
         recyclerView.layoutManager = GridLayoutManager(this, 4)
         mFunctionName = resources.getStringArray(R.array.function)
         mFunctionRes = resources.obtainTypedArray(R.array.functionRes)
