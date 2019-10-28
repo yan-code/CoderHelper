@@ -10,7 +10,6 @@ import com.yan.coderhelper.callback.ApiSwitchCallBack
  * description：
  */
 class CoderHelper {
-
     companion object{
         private var instance: CoderHelper? = null
             get() {

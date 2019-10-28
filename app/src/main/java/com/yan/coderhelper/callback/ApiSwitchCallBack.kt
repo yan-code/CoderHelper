@@ -6,5 +6,5 @@ package com.yan.coderhelper.callback
  * description：
  */
 interface ApiSwitchCallBack {
-    fun ApiSwitchListener(apiPosition : Int)
+    fun ApiSwitchListener(apiPosition : Int,appApiSaveLIstener: AppApiSaveCallBack)
 }

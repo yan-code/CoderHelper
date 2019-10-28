@@ -17,6 +17,7 @@ import com.yan.coderhelper.adapter.FunctionListAdapter
 import com.yan.coderhelper.adapter.InfoListAdapter
 import com.yan.coderhelper.bean.FunctionBean
 import com.yan.coderhelper.bean.InfoBean
+import com.yan.coderhelper.callback.AppApiSaveCallBack
 import com.yan.coderhelper.dialog.LogcatDialog
 import com.yan.coderhelper.helper.CoderHelper
 import com.yan.coderhelper.helper.PermissionHelper
@@ -221,7 +222,11 @@ class FunctionActivity : AppCompatActivity() {
             FunctionListAdapter(mApiList, object : FunctionListAdapter.onItemClickListener {
                 override fun onItemClickListener(view: View, position: Int) {
                     ToastUtils.showShort(mApiList[position].name)
-                    CoderHelper.get().mApiCallBack?.ApiSwitchListener(position)
+                    CoderHelper.get().mApiCallBack?.ApiSwitchListener(position,object : AppApiSaveCallBack{
+                        override fun AppApiSaveListener(api: Int) {
+                            SPUtils.getInstance().put(HelperConstan.SP_KEY.CURRENT_API, api)
+                        }
+                    })
                     mApiBottomDialog?.dismiss()
                     AppUtils.relaunchApp(true)
                 }
