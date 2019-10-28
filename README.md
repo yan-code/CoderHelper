@@ -86,3 +86,13 @@ Step 2. Add the dependency
         FloatingView.get().detach(this);
     }
         
+# 提示
+需在root project下的build.gradle中支持kotlin
+
+	buildscript {
+    ext.kotlin_version = '1.3.50'
+    ...
+    dependencies{
+     classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+     }
+    }
