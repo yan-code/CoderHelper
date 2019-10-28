@@ -94,7 +94,7 @@ class FunctionActivity : AppCompatActivity() {
                             CleanUtils.cleanInternalDbs()
                             CleanUtils.cleanExternalCache()
                             ToastUtils.showShort("清除缓存成功！")
-                            AppUtils.relaunchApp()
+                            AppUtils.relaunchApp(true)
                         }
                         4 ->{
                             ToastUtils.showShort(mFunctionList[position].name)
@@ -222,9 +222,8 @@ class FunctionActivity : AppCompatActivity() {
                 override fun onItemClickListener(view: View, position: Int) {
                     ToastUtils.showShort(mApiList[position].name)
                     CoderHelper.get().mApiCallBack?.ApiSwitchListener(position)
-                    SPUtils.getInstance().put(HelperConstan.SP_KEY.CURRENT_API,position)
                     mApiBottomDialog?.dismiss()
-                    AppUtils.relaunchApp()
+                    AppUtils.relaunchApp(true)
                 }
             })
         mRvApiView.adapter = mApiAdapter
