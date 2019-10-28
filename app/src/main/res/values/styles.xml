@@ -8,6 +8,23 @@
         <item name="colorAccent">@color/c2C2C2C</item>
     </style>
 
+    <style name="AppTheme.Transparent" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:textAllCaps">false</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowEnableSplitTouch">false</item>
+        <item name="android:splitMotionEvents">false</item>
+        <item name="colorPrimary">@android:color/white</item>
+        <item name="colorPrimaryDark">@android:color/white</item>
+        <item name="colorAccent">@color/cEDD25B</item>
+        <item name="android:windowDisablePreview">true</item>
+        <!--背景-->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!--窗体透明-->
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
     <style name="common_line">
         <item name="android:background">@color/cf5f5f5</item>
         <item name="android:layout_height">0.5dp</item>
