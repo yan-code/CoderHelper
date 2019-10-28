@@ -3,7 +3,7 @@
 [![](https://jitpack.io/v/yan-code/CoderHelper.svg)](https://jitpack.io/#yan-code/CoderHelper)
 
 
-# 使用方法
+# 集成方法
 Step 1. Add it in your root build.gradle at the end of repositories:
 
 	allprojects {
@@ -19,6 +19,7 @@ Step 2. Add the dependency
 	        implementation 'com.github.yan-code:CoderHelper:1.1.10'
 	}
 
+# 使用方法
 在Aplication页面添加初始化代码
 
  FloatingView.get().add();
