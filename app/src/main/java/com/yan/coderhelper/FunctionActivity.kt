@@ -60,7 +60,7 @@ class FunctionActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_function)
-        SPUtils.getInstance().put("SP","ABC")
+        SPUtils.getInstance().put("SP", "ABC")
         init()
     }
 
@@ -101,9 +101,9 @@ class FunctionActivity : AppCompatActivity() {
                             ToastUtils.showShort("清除缓存成功！")
                             Handler().postDelayed({
                                 AppUtils.relaunchApp(true)
-                            },500)
+                            }, 500)
                         }
-                        4 ->{
+                        4 -> {
                             ToastUtils.showShort(mFunctionList[position].name)
                         }
                         5 -> LogcatDialog(this@FunctionActivity).show()
@@ -124,45 +124,49 @@ class FunctionActivity : AppCompatActivity() {
     }
 
     private fun showAppInfo(title: String) {
-        var mArrayAppInfo = resources.getStringArray(R.array.app_info)
-        for ((index, s) in mArrayAppInfo.withIndex()) {
-            var infoBean = InfoBean(s)
-            when (index) {
-                0 -> infoBean.infoValue = AppUtils.getAppPackageName()
-                1 -> infoBean.infoValue = AppUtils.getAppVersionName()
-                2 -> infoBean.infoValue = AppUtils.getAppVersionCode().toString()
-                3 -> {
-                    when (CoderHelper.get().mCurrentApi) {
-                        1 -> infoBean.infoValue = mApiList[0].name
-                        2 -> infoBean.infoValue = mApiList[1].name
-                        3 -> infoBean.infoValue = mApiList[2].name
-                        4 -> infoBean.infoValue = mApiList[3].name
-                        5 -> infoBean.infoValue = mApiList[4].name
+        if (mAppInfoBottomDialog == null) {
+            var mArrayAppInfo = resources.getStringArray(R.array.app_info)
+            for ((index, s) in mArrayAppInfo.withIndex()) {
+                var infoBean = InfoBean(s)
+                when (index) {
+                    0 -> infoBean.infoValue = AppUtils.getAppPackageName()
+                    1 -> infoBean.infoValue = AppUtils.getAppVersionName()
+                    2 -> infoBean.infoValue = AppUtils.getAppVersionCode().toString()
+                    3 -> {
+                        when (CoderHelper.get().mCurrentApi) {
+                            1 -> infoBean.infoValue = mApiList[0].name
+                            2 -> infoBean.infoValue = mApiList[1].name
+                            3 -> infoBean.infoValue = mApiList[2].name
+                            4 -> infoBean.infoValue = mApiList[3].name
+                            5 -> infoBean.infoValue = mApiList[4].name
+                        }
                     }
-                }
-                4 -> {
-                    when (NetworkUtils.getNetworkType().name) {
-                        NetworkUtils.NetworkType.NETWORK_WIFI.name -> infoBean.infoValue = "WIFI"
-                        NetworkUtils.NetworkType.NETWORK_4G.name -> infoBean.infoValue = "4G"
-                        NetworkUtils.NetworkType.NETWORK_3G.name -> infoBean.infoValue = "3G"
-                        NetworkUtils.NetworkType.NETWORK_2G.name -> infoBean.infoValue = "2G"
-                        NetworkUtils.NetworkType.NETWORK_ETHERNET.name -> infoBean.infoValue = "以太网"
-                        NetworkUtils.NetworkType.NETWORK_NO.name -> infoBean.infoValue = "无网络"
-                        NetworkUtils.NetworkType.NETWORK_UNKNOWN.name -> infoBean.infoValue =
-                            "UNKNOWN"
-                    }
+                    4 -> {
+                        when (NetworkUtils.getNetworkType().name) {
+                            NetworkUtils.NetworkType.NETWORK_WIFI.name -> infoBean.infoValue =
+                                "WIFI"
+                            NetworkUtils.NetworkType.NETWORK_4G.name -> infoBean.infoValue = "4G"
+                            NetworkUtils.NetworkType.NETWORK_3G.name -> infoBean.infoValue = "3G"
+                            NetworkUtils.NetworkType.NETWORK_2G.name -> infoBean.infoValue = "2G"
+                            NetworkUtils.NetworkType.NETWORK_ETHERNET.name -> infoBean.infoValue =
+                                "以太网"
+                            NetworkUtils.NetworkType.NETWORK_NO.name -> infoBean.infoValue = "无网络"
+                            NetworkUtils.NetworkType.NETWORK_UNKNOWN.name -> infoBean.infoValue =
+                                "UNKNOWN"
+                        }
 
+                    }
                 }
+                mAppInfoBeanList.add(infoBean)
             }
-            mAppInfoBeanList.add(infoBean)
+            mAppInfoBottomDialog = BottomSheetDialog(this, R.style.dialog)
+            mAppInfoBottomDialog!!.setContentView(
+                createInfoView(
+                    title,
+                    mAppInfoBeanList,
+                    View.OnClickListener { mAppInfoBottomDialog?.dismiss() })
+            )
         }
-        mAppInfoBottomDialog = BottomSheetDialog(this, R.style.dialog)
-        mAppInfoBottomDialog!!.setContentView(
-            createInfoView(
-                title,
-                mAppInfoBeanList,
-                View.OnClickListener { mAppInfoBottomDialog?.dismiss() })
-        )
         mAppInfoBottomDialog?.show()
 
     }
@@ -219,7 +223,7 @@ class FunctionActivity : AppCompatActivity() {
         var mTvTitle = mApiView.findViewById<TextView>(R.id.tv_title)
         mTvTitle.text = title
         var mIvClose = mApiView.findViewById<ImageView>(R.id.iv_close)
-        mIvClose.setOnClickListener{
+        mIvClose.setOnClickListener {
             mApiBottomDialog?.dismiss()
         }
         var mRvApiView = mApiView.findViewById<RecyclerView>(R.id.rv_infoView)
@@ -228,15 +232,16 @@ class FunctionActivity : AppCompatActivity() {
             FunctionListAdapter(mApiList, object : FunctionListAdapter.onItemClickListener {
                 override fun onItemClickListener(view: View, position: Int) {
                     ToastUtils.showShort(mApiList[position].name)
-                    CoderHelper.get().mApiCallBack?.ApiSwitchListener(position,object : AppApiSaveCallBack{
-                        override fun AppApiSaveListener(api: Int) {
-                            CoderHelper.Builder().CurrentApi(api)
-                        }
-                    })
+                    CoderHelper.get().mApiCallBack?.ApiSwitchListener(position,
+                        object : AppApiSaveCallBack {
+                            override fun AppApiSaveListener(api: Int) {
+                                CoderHelper.Builder().CurrentApi(api)
+                            }
+                        })
                     mApiBottomDialog?.dismiss()
                     Handler().postDelayed({
                         AppUtils.relaunchApp(true)
-                    },500)
+                    }, 500)
                 }
             })
         mRvApiView.adapter = mApiAdapter
