@@ -59,10 +59,14 @@ Step 2. Add the dependency
                         HttpConstant.val=HttpConstant.Envir.test_2;
                         break;
                     case 3:
+                        // test3
+                        HttpConstant.val = HttpConstant.Envir.test_3;
+                        break;
+                    case 4:
                         // pre
                         HttpConstant.val=HttpConstant.Envir.pre;
                         break;
-                    case 4:
+                    case 5:
                         // online
                         HttpConstant.val=HttpConstant.Envir.online;
                         break;
