@@ -139,6 +139,7 @@ class FunctionActivity : AppCompatActivity() {
                             3 -> infoBean.infoValue = mApiList[2].name
                             4 -> infoBean.infoValue = mApiList[3].name
                             5 -> infoBean.infoValue = mApiList[4].name
+                            6 -> infoBean.infoValue = mApiList[5].name
                         }
                     }
                     4 -> {

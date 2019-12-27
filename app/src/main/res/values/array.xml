@@ -42,6 +42,7 @@
         <item>开发</item>
         <item>测试</item>
         <item>测试2</item>
+        <item>测试3</item>
         <item>预发布</item>
         <item>生产</item>
     </string-array>
@@ -50,6 +51,7 @@
         <item>@drawable/icon_dev</item>
         <item>@drawable/icon_test</item>
         <item>@drawable/icon_test2</item>
+        <item>@drawable/icon_test</item>
         <item>@drawable/icon_pre</item>
         <item>@drawable/icon_online</item>
     </array>
