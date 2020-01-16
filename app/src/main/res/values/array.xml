@@ -8,6 +8,7 @@
         <item>清除缓存</item>
         <item>账号管理</item>
         <item>查看Log</item>
+        <item>线上验证</item>
     </string-array>
 
     <array name="functionRes">
@@ -17,6 +18,7 @@
         <item>@drawable/icon_clear</item>
         <item>@drawable/icon_accountt</item>
         <item>@drawable/icon_log</item>
+        <item>@drawable/icon_pro_test</item>
     </array>
 
     <string-array name="app_info">

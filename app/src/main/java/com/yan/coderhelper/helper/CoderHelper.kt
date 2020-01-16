@@ -3,6 +3,7 @@ package com.yan.coderhelper.helper
 import com.blankj.utilcode.util.SPUtils
 import com.yan.coderhelper.HelperConstan
 import com.yan.coderhelper.callback.ApiSwitchCallBack
+import com.yan.coderhelper.callback.TokenSaveCallBack
 
 /**
  * @author Yan
@@ -24,6 +25,7 @@ class CoderHelper {
     }
 
     var mApiCallBack : ApiSwitchCallBack? = null
+    var mTokenCallBack : TokenSaveCallBack? = null
     var mCurrentApi : Int = SPUtils.getInstance().getInt(HelperConstan.SP_KEY.CURRENT_API,-1)
 
     class Builder{
@@ -35,6 +37,11 @@ class CoderHelper {
         fun CurrentApi(api:Int):Builder{
             build().mCurrentApi = api
             SPUtils.getInstance().put(HelperConstan.SP_KEY.CURRENT_API, api)
+            return this
+        }
+
+        fun TokenSaveCallBack(tokenCallBack:TokenSaveCallBack):Builder{
+            build().mTokenCallBack = tokenCallBack
             return this
         }
 

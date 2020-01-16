@@ -41,4 +41,9 @@
         <item name="android:backgroundDimEnabled">true</item>
         <item name="android:backgroundDimAmount">0.6</item>
     </style>
+
+    <style name="MyEditText" parent="Theme.AppCompat.Light">
+        <item name="colorControlNormal">@color/c666666</item>
+        <item name="colorControlActivated">@color/cEDD25B</item>
+    </style>
 </resources>

@@ -10,7 +10,10 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.text.TextUtils
 import android.view.View
+import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import com.blankj.utilcode.util.*
@@ -48,6 +51,8 @@ class FunctionActivity : AppCompatActivity() {
     private var mApiList = mutableListOf<FunctionBean>()
     private lateinit var mApiAdapter: FunctionListAdapter
     private var mApiBottomDialog: BottomSheetDialog? = null
+    //------------------------------线上问题查验----------------------------------
+    private var mTokenBottomDialog: BottomSheetDialog? = null
 
     companion object {
         fun startActivity(context: Context) {
@@ -107,6 +112,7 @@ class FunctionActivity : AppCompatActivity() {
                             ToastUtils.showShort(mFunctionList[position].name)
                         }
                         5 -> LogcatDialog(this@FunctionActivity).show()
+                        6-> showEtToken(mFunctionList[position].name)
                     }
                 }
 
@@ -187,6 +193,45 @@ class FunctionActivity : AppCompatActivity() {
         var mInfoAdapter = InfoListAdapter(list)
         mRvInfoView.adapter = mInfoAdapter
         return mInfoView
+    }
+
+    private fun showEtToken(title: String) {
+        if (mTokenBottomDialog == null) {
+            mTokenBottomDialog = BottomSheetDialog(this, R.style.dialog)
+            mTokenBottomDialog!!.setContentView(
+                createEditTextView(
+                    title,
+                    View.OnClickListener { mAppInfoBottomDialog?.dismiss() })
+            )
+        }
+        mTokenBottomDialog?.show()
+
+    }
+
+    private fun createEditTextView(
+        title: String,
+        onClickListener: View.OnClickListener
+    ): View {
+        var mEtView = View.inflate(this, R.layout.dialog_editext_view, null)
+        var mTvTitle = mEtView.findViewById<TextView>(R.id.tv_title)
+        mTvTitle.text = title
+        var mIvClose = mEtView.findViewById<ImageView>(R.id.iv_close)
+        mIvClose.setOnClickListener(onClickListener)
+        var mEtToken = mEtView.findViewById<EditText>(R.id.et_token)
+        var mBtnSave = mEtView.findViewById<Button>(R.id.btn_save)
+        mBtnSave.setOnClickListener {
+            var token = mEtToken.text.toString().trim()
+            if (TextUtils.isEmpty(token)){
+                ToastUtils.showShort("请输入token")
+            }else{
+                CoderHelper.get().mTokenCallBack?.SaveToken(token)
+                mAppInfoBottomDialog?.dismiss()
+                Handler().postDelayed({
+                    AppUtils.relaunchApp(true)
+                }, 500)
+            }
+        }
+        return mEtView
     }
 
     private fun showDeviceInfo(title: String) {

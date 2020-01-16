@@ -4,8 +4,10 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.blankj.utilcode.util.SPUtils
+import com.blankj.utilcode.util.ToastUtils
 import com.yan.coderhelper.callback.ApiSwitchCallBack
 import com.yan.coderhelper.callback.AppApiSaveCallBack
+import com.yan.coderhelper.callback.TokenSaveCallBack
 import com.yan.coderhelper.floatview.FloatingMagnetView
 import com.yan.coderhelper.floatview.FloatingView
 import com.yan.coderhelper.floatview.MagnetViewListener
@@ -64,18 +66,30 @@ class MainActivity : AppCompatActivity() {
                         api = 3
                     }
                     3 -> {
-                        // todo pre
+                        // todo test3
                         api = 4
                     }
                     4 -> {
-                        // todo online
+                        // todo pre
                         api = 5
+                    }
+                    5 -> {
+                        // todo online
+                        api = 6
                     }
                 }
                 appApiSaveLIstener.AppApiSaveListener(api)
             }
 
         })
+            .TokenSaveCallBack(object : TokenSaveCallBack{
+                override fun SaveToken(token: String) {
+                    ToastUtils.showShort(token)
+                    CoderHelper.Builder().CurrentApi(6)
+                }
+
+            })
+
     }
 
     override fun onStart() {
@@ -86,6 +100,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStop() {
         super.onStop()
-        FloatingView.get().detach(this);
+        FloatingView.get().detach(this)
     }
 }
