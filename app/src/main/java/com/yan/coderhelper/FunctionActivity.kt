@@ -201,7 +201,7 @@ class FunctionActivity : AppCompatActivity() {
             mTokenBottomDialog!!.setContentView(
                 createEditTextView(
                     title,
-                    View.OnClickListener { mAppInfoBottomDialog?.dismiss() })
+                    View.OnClickListener { mTokenBottomDialog?.dismiss() })
             )
         }
         mTokenBottomDialog?.show()
