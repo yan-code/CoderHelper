@@ -92,7 +92,7 @@ public class FloatingView implements IFloatingView {
         if (mEnFloatingView.getParent() == container) {
             return this;
         }
-        if (mContainer != null && mEnFloatingView.getParent() != container) {
+        if (mContainer != null && mEnFloatingView.getParent() == mContainer) {
             mContainer.removeView(mEnFloatingView);
         }
         mContainer = container;
