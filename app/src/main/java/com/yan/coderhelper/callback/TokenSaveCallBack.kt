@@ -6,5 +6,5 @@ package com.yan.coderhelper.callback
  * description：
  */
 interface TokenSaveCallBack {
-    fun SaveToken(token:String)
+    fun SaveToken(token:String,appApiSaveCallBack:AppApiSaveCallBack)
 }

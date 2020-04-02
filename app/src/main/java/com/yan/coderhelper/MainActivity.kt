@@ -83,9 +83,9 @@ class MainActivity : AppCompatActivity() {
 
         })
             .TokenSaveCallBack(object : TokenSaveCallBack{
-                override fun SaveToken(token: String) {
+                override fun SaveToken(token: String, appApiSaveCallBack: AppApiSaveCallBack) {
                     ToastUtils.showShort(token)
-                    CoderHelper.Builder().CurrentApi(6)
+                    appApiSaveCallBack.AppApiSaveListener(6)
                 }
 
             })

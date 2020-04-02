@@ -224,7 +224,11 @@ class FunctionActivity : AppCompatActivity() {
             if (TextUtils.isEmpty(token)){
                 ToastUtils.showShort("请输入token")
             }else{
-                CoderHelper.get().mTokenCallBack?.SaveToken(token)
+                CoderHelper.get().mTokenCallBack?.SaveToken(token, object : AppApiSaveCallBack {
+                    override fun AppApiSaveListener(api: Int) {
+                        CoderHelper.Builder().CurrentApi(api)
+                    }
+                })
                 mAppInfoBottomDialog?.dismiss()
                 Handler().postDelayed({
                     AppUtils.relaunchApp(true)
