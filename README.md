@@ -61,30 +61,31 @@ Step 2. Add the dependency
                 appApiSaveCallBack.AppApiSaveListener(HttpConstant.val);
             }
         });
-	 CoderHelper.get().mTokenCallBack = object : TokenSaveCallBack {
-
-            override fun SaveToken(token: String, appApiSaveCallBack: AppApiSaveCallBack) {
-	    	//替换本地token为需要验证的线上token
-                UserUtil.init().token = token
-                HttpConstant.`val` = HttpConstant.Envir.online
-                appApiSaveCallBack.AppApiSaveListener(HttpConstant.`val`)
+	 CoderHelper.Companion.get().setMTokenCallBack(new TokenSaveCallBack() {
+            @Override
+            public void SaveToken(@NotNull String token, @NotNull AppApiSaveCallBack appApiSaveCallBack) {
+                UserUtil.instance().setWxToken(token);
+                HttpConstant.val = HttpConstant.Envir.online;
+                appApiSaveCallBack.AppApiSaveListener(HttpConstant.val);
             }
+        });
+        if (HttpConstant.val == HttpConstant.Envir.online) {
+            return;
         }
-        if (HttpConstant.`val` == HttpConstant.Envir.online) {
-            return
-        }
-        FloatingView.get().add()
-        FloatingView.get().listener(object : MagnetViewListener {
+        FloatingView.get().add();
+        FloatingView.get().listener(new MagnetViewListener() {
 
-            override fun onRemove(magnetView: FloatingMagnetView) {
+
+            @Override
+            public void onRemove(FloatingMagnetView magnetView) {
 
             }
 
-            override fun onClick(magnetView: FloatingMagnetView) {
-                //跳转功能页面
-                FunctionActivity.startActivity(context)
+            @Override
+            public void onClick(FloatingMagnetView magnetView) {
+                FunctionActivity.Companion.startActivity(ChangTouApplication.this);
             }
-        })
+        });
 
 在BaseActivity添加
 	
