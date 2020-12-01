@@ -22,8 +22,8 @@ Step 2. Add the dependency
 # 使用方法
 在Aplication页面添加初始化代码
 
- FloatingView.get().add();
-        FloatingView.get().listener(new MagnetViewListener() {
+ 	FloatingView.get().add();
+ 	FloatingView.get().listener(new MagnetViewListener() {
 
             @Override
             public void onRemove(FloatingMagnetView magnetView) {
